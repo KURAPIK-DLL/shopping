@@ -1,0 +1,32 @@
+*admin 
+-- id  :
+-- firstName :
+-- lastName :
+-- username /email :
+-- password :
+
+
+*category :
+--id :
+-- category name :
+
+
+*prduits 
+
+-- id :
+-- name :
+-- categorie id :
+-- price :
+-- thumbnail :
+-- description :
+
+
+*users 
+*users meta 
+
+*orders 
+*orderitems 
+*ordertracking 
+
+
+
