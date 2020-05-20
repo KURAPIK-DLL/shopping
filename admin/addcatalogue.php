@@ -37,7 +37,7 @@
 		<div class="content-blog">
 			<div class="container">
 			<form method="post">
-			 <div class="form-control">
+			 <div class="form-group">
 				 <label for="productname">category name</label>
 				 <input type="text" value="" class="form-control" name="categoryname"  id="categoryname" placeholder="category name">
 			 </div>
