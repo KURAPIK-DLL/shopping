@@ -1,6 +1,6 @@
 <?php 
 			session_start();
-			require '../config/connecte.php'   ;  
+			require_once '../config/connecte.php'   ;  
 	       if(!isset($_SESSION['email']) &  empty($_SESSION['email']) )
 			{
 				header('location: login.php');
@@ -12,7 +12,7 @@
 		 {
 			 $name = mysqli_real_escape_string($connection,$_POST['categoryname']);
 			 $sql = "INSERT INTO category (name) VALUES ('$name')";
-			 $res = mysqli_query($connection, $sql);
+			 $res = mysqli_query($connection,$sql);
 
 			 if($res)
 			 {
