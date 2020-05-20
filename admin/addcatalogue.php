@@ -5,7 +5,7 @@
 			{
 				header('location: login.php');
 				exit();
-			}
+			
 
 		 if(isset($_POST) & !empty($_POST))
 		 {
@@ -22,6 +22,7 @@
 				 echo "failed to add category";
 			 }
 		 }
+		}
 
       ?>
 
