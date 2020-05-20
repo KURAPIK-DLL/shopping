@@ -8,10 +8,10 @@
 						<a href="#">catalogue des produits </a>
 						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
 						<ul>
-							<li><a href="catalogue.php">afficher </a></li>
-							<li><a href="addcatalogue.php">ajouter est editer</a></li>
-							<li><a href="produit.php">afficher </a></li>
-							<li><a href="addproduit.php">ajouter est editer</a></li>
+							<li><a href="catalogue.php">catalogue </a></li>
+							<li><a href="addcatalogue.php">ajouter catalogue</a></li>
+							<li><a href="produit.php">afficher produits </a></li>
+							<li><a href="addproduit.php">ajouter produits</a></li>
 						</ul>
 					</li>
 					<li>
