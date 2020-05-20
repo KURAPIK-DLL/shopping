@@ -18,8 +18,8 @@
 	
 	
 
-	
-	<!-- SHOP CONTENT -->
+<!-- 	
+	SHOP CONTENT
 	<section id="content">
 		<div class="content-blog">
 			<div class="container">
@@ -32,5 +32,7 @@
 				</form>
 			</div>
 		</div> 
-	</section>
+	</section> -->
+
+	
     <?php include'inc\footer.php'; ?>
