@@ -4,7 +4,7 @@
 	if(!isset($_SESSION['email']) &  empty($_SESSION['email']) )
 			{
 				header('location: login.php');
-				
+			}	
 			
 
 		 if(isset($_POST) & !empty($_POST))
@@ -13,7 +13,7 @@
 			 $sql = "INSERT INTO category (name) VALUES ('$name')";
 			 $res = mysqli_query($connection,$sql);
 
-			 if ($res)
+			 if($res)
 			 {
 				 echo "categorie added";
 			 }
@@ -22,17 +22,12 @@
 				 echo "failed to add category";
 			 }
 		 }
-		}
+		
 
       ?>
 
 <?php include'inc/header.php'; ?>
 <?php include'inc/nav.php'; ?>
-			
-	
-	
-
-	
 	<!-- SHOP CONTENT -->
 	<section id="content">
 		<div class="content-blog">
