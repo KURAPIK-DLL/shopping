@@ -42,7 +42,7 @@
     <tr>
       <th scope="row"><?php echo $r['ID']; ?></th>
       <td><?php echo $r['name']; ?></td>
-      <td> <a href="editcategory.php?id=<?php echo $r['ID']; ?>"><button type="button" class="btn btn-danger">EDIT</button></a> <a href="delcategory.php?id=<?php echo $r['ID']; ?>"><button type="button" class="btn btn-danger">DELETE</button></a></td>
+      <td> <a href="editcategory.php?id=<?php echo $r['ID'] ?>"><button type="button" class="btn btn-danger">EDIT</button></a> <a href="delcategory.php?id=<?php echo $r['ID']; ?>"><button type="button" class="btn btn-danger">DELETE</button></a></td>
   </tr> <?php }  ?>
 			</table>
 			
