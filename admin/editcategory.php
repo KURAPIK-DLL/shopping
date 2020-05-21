@@ -9,7 +9,7 @@
             
             if(isset($_GET) & !empty($_GET))
             {
-                $ID = $_GET['id'];
+                $id = $_GET['id'];
 
             }else
             {
@@ -22,7 +22,7 @@
 
 			 $name = mysqli_real_escape_string($connection,$_POST['id']);
 			 $name = mysqli_real_escape_string($connection,$_POST['categoryname']);
-			 $sql = "UPDATE category SET name='$name' WHERE id=$ID";
+			 $sql = "UPDATE category SET name='$name' WHERE id=$id";
 			 $res = mysqli_query($connection,$sql);
 
 			 if($res)
@@ -49,12 +49,12 @@
 			 <div class="form-group">
                  <label for="productname">category name</label>
                  <?php 
-  $sql="SELECT * FROM category WHERE id = $ID ";
+  $sql="SELECT * FROM category WHERE id = $id ";
   $res = mysqli_query($connection,$sql);
   $r = mysqli_fetch_assoc($res) ;
 
       ?>
-      <input type="button" name="ID" value="<?php echo $r['id']; ?>">
+      <!-- <input type="button" name="id" value="<?php echo $r['id']; ?>"> -->
 				 <input type="text"  class="form-control" name="categoryname"  id="categoryname" placeholder="category name" value="<?php echo $r['name']; ?>">
 			 </div>
 			<button type="submit" class="btn btn-default">submit</button>
