@@ -21,7 +21,7 @@
             }
             else
             {
-                header('location : catelogue.php');
+                header('location : catalogue.php');
             } 
         
       ?>
