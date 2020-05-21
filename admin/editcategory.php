@@ -54,7 +54,7 @@
   $r = mysqli_fetch_assoc($res) ;
 
       ?>
-      <!-- <input type="button" name="id" value="<?php echo $r['id']; ?>"> -->
+                <input type="button" name="id" value="<?php echo $r['id']; ?>">
 				 <input type="text"  class="form-control" name="categoryname"  id="categoryname" placeholder="category name" value="<?php echo $r['name']; ?>">
 			 </div>
 			<button type="submit" class="btn btn-default">submit</button>
