@@ -27,11 +27,11 @@
 
 			 if($res)
 			 {
-				 echo "categorie added";
+				 echo "categorie updated";
 			 }
 			 else
 			 {
-				 echo "failed to add category";
+				 echo "failed to update category";
 				 
 			 }
          }
