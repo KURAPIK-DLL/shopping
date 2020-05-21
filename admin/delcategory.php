@@ -10,8 +10,8 @@
 
             if(isset($_GET) & !empty($_GET))
             {
-                $id = $_GET['id'];
-                $sql = " DELETE FROM category WHERE id='$id' ";
+                $id = $_GET['ID'];
+                $sql = " DELETE FROM category WHERE ID='$id' ";
                 if(mysqli_query($connection,$sql))
                 {
                     header('location : catalogue.php');
