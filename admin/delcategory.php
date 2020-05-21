@@ -15,6 +15,7 @@
                 if(mysqli_query($connection,$sql))
                 {
                     header('location : catalogue.php');
+                    exit;
                 }
 
             }else
