@@ -39,18 +39,18 @@
 			<?php    
 						 if(isset($fmsg))
 						 { ?>
-                           <div class="alert alert-danger" role="alert"><?php echo $fmsg;	 ?> <?php  } ?>
+                           <div class="alert alert-danger" role="alert"><?php echo $fmsg;	 ?></div> <?php  } ?>
 
 	
-					?>
+					
 
 					<?php    
 						 if(isset($vmsg))
 						 { ?>
-                           <div class="alert alert-success" role="alert"><?php echo $vmsg;	 ?> <?php  } ?>
+                           <div class="alert alert-success" role="alert"><?php echo $vmsg;	 ?></div> <?php  } ?>
 
 	
-					?>
+				
 
 			<form method="post">
 			 <div class="form-group">
