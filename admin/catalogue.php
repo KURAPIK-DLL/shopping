@@ -35,6 +35,7 @@
 
   <tbody>
   <?php 
+   require_once '../config/connecte.php'   ;
   $sql="SELECT * FROM category";
   $res = mysqli_query($connection,$sql);
   while($r = mysqli_fetch_assoc($res)) {
