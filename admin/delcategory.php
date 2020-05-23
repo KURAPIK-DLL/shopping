@@ -11,21 +11,20 @@
 
             if(isset($_GET) & !empty($_GET))
             {
-                require_once '../config/connecte.php'   ;
+                
                 $id = $_GET['id'];
                 $sql = " DELETE FROM category WHERE id='$id' ";
                 if(mysqli_query($connection,$sql))
                 {
-                    header('location : catalogue.php');
-                    
-                    
-                }
-
-            }
-            else
-            {
-                header('location : catalogue.php');
+                   // header('location : catalogue.php');
+                   echo "<script>window.location.href='catalogue.php';</script>";
+                   exit;
+                }    
+                }else
+                {
+                    echo "<script>window.location.href='catalogue.php';</script>";
+                    exit;
                 
-            } 
-        
+                } 
+            
       ?>
