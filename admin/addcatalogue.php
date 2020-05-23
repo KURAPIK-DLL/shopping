@@ -16,11 +16,12 @@
 
 			 if($res)
 			 {
-				 echo "categorie added";
+				 $vmsg= "categorie added";
+				
 			 }
 			 else
 			 {
-				 echo "failed to add category";
+				 $fmsg= "failed to add category";
 				 
 			 }
 		 }
@@ -33,7 +34,24 @@
 	<!-- SHOP CONTENT -->
 	<section id="content">
 		<div class="content-blog">
+	            	
 			<div class="container">
+			<?php    
+						 if(isset($fmsg))
+						 { ?>
+                           <div class="alert alert-danger" role="alert"><?php echo $fmsg;	 ?> <?php  } ?>
+
+	
+					?>
+
+					<?php    
+						 if(isset($vmsg))
+						 { ?>
+                           <div class="alert alert-success" role="alert"><?php echo $vmsg;	 ?> <?php  } ?>
+
+	
+					?>
+
 			<form method="post">
 			 <div class="form-group">
 				 <label for="productname">category name</label>

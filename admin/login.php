@@ -117,6 +117,13 @@ session_start();
 					<div class="col-md-12">
 				<div class="row shop-login">
 				<div class="col-md-6 col-md-offset-3">
+					<?php    
+						 if(isset($fmsg))
+						 { ?>
+                           <div class="alert alert-danger" role="alert"><?php echo $fmsg;	 ?> <?php  } ?>
+
+	
+					?>
 					<div class="box-content">
 						<!-- <h3 class="heading text-center">I'm a Returning Customer</h3> -->
 						<div class="clearfix space40"></div>
