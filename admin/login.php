@@ -123,7 +123,7 @@ session_start();
                            <div class="alert alert-danger" role="alert"><?php echo $fmsg;	 ?> <?php  } ?>
 
 	
-					?>
+					
 					<div class="box-content">
 						<!-- <h3 class="heading text-center">I'm a Returning Customer</h3> -->
 						<div class="clearfix space40"></div>
