@@ -1,5 +1,8 @@
-<?php 
-			session_start();
+<?php
+
+use function PHPSTORM_META\type;
+
+session_start();
 			require_once '../config/connecte.php'   ;  
 			if(!isset($_SESSION['email']) &  empty($_SESSION['email']) )
 			{
@@ -11,10 +14,43 @@
                 $name=mysqli_real_escape_string($connection,$_POST['productname']);
                 $description=mysqli_real_escape_string($connection,$_POST['productdiscreption']);
                 $category=mysqli_real_escape_string($connection,$_POST['productcategory']);
-                $price=mysqli_real_escape_string($connection,$_POST['productimage']);
-                $price=mysqli_real_escape_string($connection,$_POST['productprice']);
+                // $image=mysqli_real_escape_string($connection,$_POST['productimage']);
+				$price=mysqli_real_escape_string($connection,$_POST['productprice']);
+				if(isset($_FILES) & !empty($_FILES))
+				{
+					$name=$_FILES['productimage']['name'];
+					$size=$_FILES['productimage']['size'];
+					$type=$_FILES['productimage']['type'];
+					$tmp_name=$_FILES['productimage']['tmp_name'];
+					
+					$max_size=5000000;
+					 $extention = substr($name , strpos($name , '.')+1);
+					 if(isset($name) & !empty($name))
+					 {
+						 if(($extention=="jpg" || $extention=="png" || $extention=="jpeg") & $type == "image/jpeg" & $size<= $max_size )
+						 {
+							 $location = "uploads/";
 
-                $sql = "INSERT INTO produits (name , description , catid,	price) VALUES ('$name',' $description',' $category','$price')";
+							 if(move_uploaded_file($tmp_name,$location.$name))
+							 {
+								 echo "upload successfully";
+							 }
+							 else{
+								 echo "fialed to upload";
+							 }
+
+						 }else
+						 {
+							 echo "only jpg  less than 5MB ";
+						 }
+						
+					 }else
+					 {
+						 echo "please select file";
+					 }
+				}
+
+                $sql = "INSERT INTO produits (name , description , catid,	price ,thumb) VALUES ('$name',' $description',' $category','$price', '$location$name')";
                 $res = mysqli_query($connection,$sql);
    
                 if($res)
@@ -29,23 +65,15 @@
                 }
 
             }
-				 
-			
-
-
       ?>
 <?php include'inc/header.php'; ?>
 <?php include'inc/nav.php'; ?>
 			
 	
-	
-
-	
-	
 	<section id="content">
 		<div class="content-blog">
 			<div class="container">
-				<form method="post">
+				<form method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="productname">product name</label>
 							<input type="text" class="form-control" id="productname" name="productname"  placeholder="product name">
