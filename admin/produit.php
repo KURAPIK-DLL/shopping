@@ -36,15 +36,21 @@
   </thead>
 
   <tbody>
+  <?php 
+  //  require_once '../config/connecte.php'   ;
+  $sql="SELECT * FROM produits";
+  $res = mysqli_query($connection,$sql);
+  while($r = mysqli_fetch_assoc($res)) {
+   ?>
 
     <tr>
-      <th scope="row">S.NO</th>
-      <td>product name</td>
-      <td>category name</td>
-      <td>yes/no name</td>
-      <td> <a href=""><button type="button" class="btn btn-danger">EDIT</button></a> <a href=""><button type="button" class="btn btn-danger">DELETE</button></a></td>
+      <th scope="row"><?php echo $r['id']; ?></th>
+      <td><?php echo $r['name']; ?></td>
+      <td><?php echo $r['catid']; ?></td>
+      <td><?php if($r['thumb']){echo "YES";}else{echo "NO";} ?></td>
+      <td> <a href="editproduct.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-danger">EDIT</button></a> <a href="delproduct.php?id=<?php echo $r['id']; ?>"><button type="button" class="btn btn-danger">DELETE</button></a></td>
   </tr> 
-			
+  <?php } ?>
   </tbody>
 		
 </table>
