@@ -5,68 +5,66 @@
 			{
 				header('location: login.php');
 				exit();
-            }
-            if(isset($_POST) & !empty($_POST))
+			}
+			 
+            if(isset($_GET) & !empty($_GET))
             {
-                $name=mysqli_real_escape_string($connection,$_POST['productname']);
-                $description=mysqli_real_escape_string($connection,$_POST['productdiscreption']);
-                $category=mysqli_real_escape_string($connection,$_POST['productcategory']);
-                $price=mysqli_real_escape_string($connection,$_POST['productimage']);
+                $id = $_GET['id'];
 
-                $sql = "INSERT INTO produits (name , description , catid,	price) VALUES ('$name',' $description',' $category','$price')";
-                $res = mysqli_query($connection,$sql);
-   
-                if($res)
-                {
-                    $vmsg= "product added";
-                   
-                }
-                else
-                {
-                    $fmsg= "failed to add product";
-                    
-                }
-
+            }else
+            {
+                header('location : produit.php');
             }
-				 
-				 
-			
-
 
       ?>
 <?php include'inc/header.php'; ?>
 <?php include'inc/nav.php'; ?>
-			
-	
-	
-
-	
-	
+				
 	<section id="content">
 		<div class="content-blog">
 			<div class="container">
-				<form method="post">
+			<?php 
+				//  require_once '../config/connecte.php'   ;  
+  $sql="SELECT * FROM produits WHERE id = $id ";
+  $res = mysqli_query($connection,$sql);
+  $r = mysqli_fetch_assoc($res) ;
+
+      ?>
+				<form method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="productname">product name</label>
-							<input type="text" class="form-control" id="productname" class="productname" placeholder="product name">
+							<input type="text" class="form-control" id="productname" class="productname" placeholder="product name" value="<?php echo $r['name']; ?> ">
 						</div>
 						<div class="form-group">
 						<label for="productname">product description</label>
-							<textarea class="form-control" name="productcategory" id="productcategory"  rows="3"></textarea>
+							<textarea class="form-control" name="productdiscreption" id="productdiscreption"  rows="3"><?php echo $r['description']; ?></textarea>
 						
 						</div>
 						<div class="form-group">
 							
 						<label for="productprice">product price</label>
-						<select class="form-control" name="productcategory" id="productcategory">
+						<input class="form-control" name="productprice" id="productprice" value="<?php echo $r['price']; ?>"></div>
 
-						<option value="">--select category--</option>
+						<div class="form-group">
+
+						<label for="productcategory">product category</label>
+						<select class="form-control" name="productcategory" id="productcategory">
+						<?php 
+                        //   require_once '../config/connecte.php'   ;
+                         $catsql="SELECT * FROM category";
+                         $catres = mysqli_query($connection,$catsql);
+                         while($catr = mysqli_fetch_assoc($catres)) {
+						 ?> 
+						 
+						<option value="<?php echo $catr['id']; ?>" <?php if($catr['id']==$r['catid']){echo "selected";}  ?>> <?php echo $catr['name']; ?> </option>
+						<?php }?> 
 						</select>
-							<!-- <input type="text" class="form-control" id="productprice" class="productprice" placeholder="product price"> -->
 						</div>
+							<!-- <input type="text" class="form-control" id="productprice" class="productprice" placeholder="product price"> -->
+						
 						<div class="form-group">
 						<label for="productimage">product image</label>
-							<input type="file" id="productimage"  class="productimage" placeholder="product image">
+							<input type="file" id="productimage"  class="productimage" placeholder="product image" >
 							<small>*jpg or png only </small>
 							
 						</div>
