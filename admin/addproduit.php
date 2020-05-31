@@ -14,7 +14,7 @@ session_start();
                 $name=mysqli_real_escape_string($connection,$_POST['productname']);
                 $description=mysqli_real_escape_string($connection,$_POST['productdiscreption']);
                 $category=mysqli_real_escape_string($connection,$_POST['productcategory']);
-                // $image=mysqli_real_escape_string($connection,$_POST['productimage']);
+            
 				$price=mysqli_real_escape_string($connection,$_POST['productprice']);
 				if(isset($_FILES) & !empty($_FILES))
 				{
@@ -50,7 +50,7 @@ session_start();
 					 }
 				}
 
-                $sql = "INSERT INTO produits (name , description , catid,	price ,thumb) VALUES ('$name',' $description',' $category','$price', '$location$name')";
+                $sql = "INSERT INTO produits (name , description , catid,	price , thumb) VALUES ('$name',' $description',' $category','$price','')";
                 $res = mysqli_query($connection,$sql);
    
                 if($res)
@@ -79,17 +79,17 @@ session_start();
 							<input type="text" class="form-control" id="productname" name="productname"  placeholder="product name">
 						</div>
 						<div class="form-group">
-						<label for="productname">product description</label>
+						<label for="productdiscreption">product description</label>
 							<textarea class="form-control" name="productdiscreption" id="productdiscreption"  rows="3"></textarea>
 						
 						</div>
 						<div class="form-group">
-						<label for="productname">product price</label>
+						<label for="productprice">product price</label>
 						<input type="text" class="form-control" id="productprice" name="productprice" laceholder="product price">
 						</div>
 						<div class="form-group">
 							
-						<label for="productprice">product category</label>
+						<label for="productcategory">product category</label>
 						<select class="form-control" name="productcategory" id="productcategory">
 
 						<option value="">--select category--</option>
@@ -106,14 +106,16 @@ session_start();
 						</div>
 						<div class="form-group">
 						<label for="productimage">product image</label>
-							<input type="file" id="productimage" name="productimage" class="form-control" placeholder="product image">
-							<small>*jpg or png only </small>
+						
+						
+							<input type="file" id="productimage" name="productimage" >
+						<small>*jpg or png only </small> 
 							
 						</div>
 						<button type="submit" class="btn btn-default">submit</button>
 				</form>
 			</div>
-		</div> 
+		</div> 	
 	</section>
 
 	

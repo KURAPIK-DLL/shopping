@@ -64,9 +64,16 @@
 						
 						<div class="form-group">
 						<label for="productimage">product image</label>
-							<input type="file" id="productimage"  class="productimage" placeholder="product image" >
-							<small>*jpg or png only </small>
-							
+						<?php  
+						if(isset($r['thumb']) & !empty($r['thumb'])) 
+						{
+							?> <img src="<?php echo $r['thumb']; ?>"  width="100px" height="100px">
+							<a href="delproduct.php?id=<?php $r['id']; ?>">Delete Image </a>
+						<?php } else { ?>
+
+							<input type="file" id="productimage"  class="productimage">
+							<p class="help-block">*jpg or png only</p> <?php } ?> 
+
 						</div>
 						<button type="submit" class="btn btn-default">submit</button>
 				</form>
