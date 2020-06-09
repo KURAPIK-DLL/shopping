@@ -1,5 +1,11 @@
-<?php include'inc/header.php'; ?>
-<?php include'inc/nav.php'; ?>
+<?php 
+session_start();
+require_once 'config/connecte.php'   ; 
+include'inc/header.php'; 
+include'inc/nav.php'; 
+$cart = $_SESSION['cart'];
+
+?>
 
 	
 	<!-- SHOP CONTENT -->
@@ -25,58 +31,57 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php
+					//jprint_r($cart);
+					$total =0;
+					foreach ($cart as $key => $value) {
+						//echo $key . ":" . $value['quantity'] . "</br>" ; 
+						$cartsql = " SELECT * FROM produits  WHERE  id = $key ";
+						$cartres = mysqli_query($connection ,$cartsql);
+						$cartr= mysqli_fetch_assoc($cartres);
+				   
+					
+					
+					?>
 					<tr>
 						<td>
-							<a class="remove"><i class="fa fa-times"></i></a>
+							<a class="remove" href="delcart.php?id=<?php echo $key; ?>"><i class="fa fa-times"></i></a>
 						</td>
 						<td>
-							<a href="#"><img src="images/shop/1.jpg" alt="" height="90" width="90"></a>					
+							<a href="#"><img src="admin/<?php echo $cartr['thumb']; ?>" alt="" height="90" width="90"></a>					
 						</td>
 						<td>
-							<a href="#">Shaving Knives</a>					
+							<a href="single.php?id=<?php echo $cartr['id']; ?>"><?php echo $cartr['name']; ?></a>					
 						</td>
 						<td>
-							<span class="amount">£69.99</span>					
+							<span class="amount"><?php echo $cartr['price']; ?>US $</span>					
 						</td>
 						<td>
-							<div class="quantity">1</div>
+							<div class="quantity"><?php echo $value['quantity']; ?></div>
+
 						</td>
 						<td>
-							<span class="amount">£69.99</span>					
+							<span class="amount"><?php echo $cartr['price']*$value['quantity'];  ?> US $</span>					
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<a class="remove"><i class="fa fa-times"></i></a>
-						</td>
-						<td>
-							<a href="#"><img src="images/shop/2.jpg" alt="" height="90" width="90"></a>					
-						</td>
-						<td>
-							<a href="#">Comb Scissors</a>					
-						</td>
-						<td>
-							<span class="amount">£119.99</span>					
-						</td>
-						<td>
-							<div class="quantity">1</div>
-						</td>
-						<td>
-							<span class="amount">£119.99</span>					
-						</td>
-					</tr>
+					
+					<?php
+					$total = $total + ($cartr['price']*$value['quantity']);
+				
+				}  ?>
+					
 					<tr>
 						<td colspan="6" class="actions">
 							<div class="col-md-6">
-								<div class="coupon">
+								<!-- <div class="coupon">
 									<label>Coupon:</label><br>
 									<input placeholder="Coupon code" type="text"> <button type="submit">Apply</button>
-								</div>
+								</div> -->
 							</div>
 							<div class="col-md-6">
 								<div class="cart-btn">
-									<button class="button btn-md" type="submit">Update Cart</button>
-									<button class="button btn-md" type="submit">Checkout</button>
+									<!-- <button class="button btn-md" type="submit">Update Cart</button> -->
+									<button class="button btn-md"  type="submit"><a href="pdf.php">Checkout</a></button>
 								</div>
 							</div>
 						</td>
@@ -91,7 +96,7 @@
 						<tbody>
 							<tr>
 								<th>Cart Subtotal</th>
-								<td><span class="amount">£190.00</span></td>
+								<td><span class="amount"><?php echo $total; ?> US $</span></td>
 							</tr>
 							<tr>
 								<th>Shipping and Handling</th>
@@ -101,7 +106,7 @@
 							</tr>
 							<tr>
 								<th>Order Total</th>
-								<td><strong><span class="amount">£190.00</span></strong> </td>
+								<td><strong><span class="amount"><?php echo $total; ?> US $</span></strong> </td>
 							</tr>
 						</tbody>
 					</table>

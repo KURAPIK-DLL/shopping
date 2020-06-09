@@ -5,7 +5,7 @@
 		<div class="footer-bottom container">
 			<div class="row">
 				<div class="col-md-6">
-					<p>&copy; Copyright 2015. CodingCyber</p>
+					<p>&copy; REALISER PAR : KHALIL EL MAGHRAOUI</p>
 				</div>
 				<div class="col-md-6">
 					

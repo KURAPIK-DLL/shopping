@@ -17,7 +17,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="inc/logo.png">
+	<link rel="shortcut icon" href="/shopping/inclogo.png">
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -57,7 +57,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-5 logo">
-					<a href="http://[::1]/cishop/admin"><img src="logo.png" class="img-responsive" alt=""/></a>
+					<a href="http://[::1]/cishop/admin"><img src="inc/logo.png" class="img-responsive" alt=""/></a>
 				</div>
 				<div class="col-md-9 col-xs-7">
 					<div class="top-bar">

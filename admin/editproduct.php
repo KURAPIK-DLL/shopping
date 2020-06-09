@@ -14,6 +14,31 @@
             }else
             {
                 header('location : produit.php');
+			}
+			if(isset($_POST) & !empty($_POST))
+            {
+                $pname=mysqli_real_escape_string($connection,$_POST['productname']);
+                $description=mysqli_real_escape_string($connection,$_POST['productdiscreption']);
+                $category=mysqli_real_escape_string($connection,$_POST['productcategory']);
+            
+				$price=mysqli_real_escape_string($connection,$_POST['productprice']);
+
+				
+
+                 $sql = "UPDATE produits SET description='$description' ,name='$pname' , catid='$category',price='$price' WHERE id=$id";
+                $res = mysqli_query($connection,$sql);
+   
+                if($res)
+                {
+                    $vmsg= "product updeted";
+                   
+                }
+                else
+                {
+                    $fmsg= "failed to updete the  product";
+                    
+                }
+
             }
 
       ?>
@@ -23,6 +48,19 @@
 	<section id="content">
 		<div class="content-blog">
 			<div class="container">
+			<?php    
+						 if(isset($fmsg))
+						 { ?>
+                           <div class="alert alert-danger" role="alert"><?php echo $fmsg;	 ?></div> <?php  } ?>
+
+	
+					
+
+					<?php    
+						 if(isset($vmsg))
+						 { ?>
+                           <div class="alert alert-success" role="alert"><?php echo $vmsg;	 ?> </div> <?php  } ?>
+
 			<?php 
 				//  require_once '../config/connecte.php'   ;  
   $sql="SELECT * FROM produits WHERE id = $id ";
@@ -33,10 +71,10 @@
 				<form method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="productname">product name</label>
-							<input type="text" class="form-control" id="productname" class="productname" placeholder="product name" value="<?php echo $r['name']; ?> ">
+							<input type="text" class="form-control" id="productname" name="productname" placeholder="product name" value="<?php echo $r['name']; ?> ">
 						</div>
 						<div class="form-group">
-						<label for="productname">product description</label>
+						<label for="productdiscreption">product description</label>
 							<textarea class="form-control" name="productdiscreption" id="productdiscreption"  rows="3"><?php echo $r['description']; ?></textarea>
 						
 						</div>
@@ -67,8 +105,9 @@
 						<?php  
 						if(isset($r['thumb']) & !empty($r['thumb'])) 
 						{
-							?> <img src="<?php echo $r['thumb']; ?>"  width="100px" height="100px">
-							<a href="delproduct.php?id=<?php $r['id']; ?>">Delete Image </a>
+							
+							?> <br> <img src="<?php echo $r['thumb']; ?>"  width="100px" height="100px">
+							<a href="delimag.php?id=<?php echo $r['id']; ?>">Delete Image </a>
 						<?php } else { ?>
 
 							<input type="file" id="productimage"  class="productimage">
